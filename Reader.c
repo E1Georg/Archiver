@@ -94,3 +94,4 @@ void readeRecodeFile(FILE *ptr, FILE *Out) {
 		free(symbol[i]);
 	}free(symbol);
 }
+
