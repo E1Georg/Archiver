@@ -4,8 +4,8 @@
 #include <locale.h>
 #include "Main.h"
 
-/* Функция считывает символ из закодированного файла, находит соответствуюший символу ASCII-код, 
-   затем записывает в файл вывода данных считанный символ, но уже в ASCII-кодировке.  */
+/* Р¤СѓРЅРєС†РёСЏ СЃС‡РёС‚С‹РІР°РµС‚ СЃРёРјРІРѕР» РёР· Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°, РЅР°С…РѕРґРёС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС€РёР№ СЃРёРјРІРѕР»Сѓ ASCII-РєРѕРґ, 
+   Р·Р°С‚РµРј Р·Р°РїРёСЃС‹РІР°РµС‚ РІ С„Р°Р№Р» РІС‹РІРѕРґР° РґР°РЅРЅС‹С… СЃС‡РёС‚Р°РЅРЅС‹Р№ СЃРёРјРІРѕР», РЅРѕ СѓР¶Рµ РІ ASCII-РєРѕРґРёСЂРѕРІРєРµ.  */
 void readeRecodeFile(FILE *ptr, FILE *Out) {
 
 	unsigned char tableSize = 0;
@@ -14,14 +14,14 @@ void readeRecodeFile(FILE *ptr, FILE *Out) {
 	int **symbol;
 
 	if ((symbol = (int**)malloc(2 * sizeof(int*))) == NULL) {
-		printf("Ошибка памяти! Память под массив symbol, Reader.c не выделена!\n");
+		printf("РћС€РёР±РєР° РїР°РјСЏС‚Рё! РџР°РјСЏС‚СЊ РїРѕРґ РјР°СЃСЃРёРІ symbol, Reader.c РЅРµ РІС‹РґРµР»РµРЅР°!\n");
 		getchar();
 		exit(1);
 	}
 
 	for (int i = 0; i < 2; i++) {
 		if ((symbol[i] = (int*)malloc(tableSize * sizeof(int))) == NULL) {
-			printf("Ошибка памяти! Память под массив symbol[%d], Reader.c не выделена!\n", i);
+			printf("РћС€РёР±РєР° РїР°РјСЏС‚Рё! РџР°РјСЏС‚СЊ РїРѕРґ РјР°СЃСЃРёРІ symbol[%d], Reader.c РЅРµ РІС‹РґРµР»РµРЅР°!\n", i);
 			getchar();
 			exit(1);
 		}		
@@ -34,7 +34,7 @@ void readeRecodeFile(FILE *ptr, FILE *Out) {
 	unsigned char counter = 0;
 	unsigned char byte = 0;
 
-	while (counter != tableSize) { //записываем в [0][i]какая буква, а в [1][i] ее расчитанный код
+	while (counter != tableSize) { //Р·Р°РїРёСЃС‹РІР°РµРј РІ [0][i]РєР°РєР°СЏ Р±СѓРєРІР°, Р° РІ [1][i] РµРµ СЂР°СЃС‡РёС‚Р°РЅРЅС‹Р№ РєРѕРґ
 
 		fread(&byte, sizeof(char), 1, ptr);
 		symbol[0][counter] = byte;
@@ -56,11 +56,11 @@ void readeRecodeFile(FILE *ptr, FILE *Out) {
 
 		if (byte == EOF) {
 			if (feof(ptr) != 0) {
-				printf("\nЧтение закончено!\n");				
+				printf("\nР§С‚РµРЅРёРµ Р·Р°РєРѕРЅС‡РµРЅРѕ!\n");				
 				break;
 			}
 			else {
-				printf("\nОшибка чтения из файла!\n");				
+				printf("\nРћС€РёР±РєР° С‡С‚РµРЅРёСЏ РёР· С„Р°Р№Р»Р°!\n");				
 				break;
 			}
 		}
@@ -87,7 +87,7 @@ void readeRecodeFile(FILE *ptr, FILE *Out) {
 			maskLength--;
 			if (maskLength == -1) break;
 		}
-		//продолжим цикл для следующего байта
+		//РїСЂРѕРґРѕР»Р¶РёРј С†РёРєР» РґР»СЏ СЃР»РµРґСѓСЋС‰РµРіРѕ Р±Р°Р№С‚Р°
 	}
 
 	for (int i = 0; i < 2; i++) {
