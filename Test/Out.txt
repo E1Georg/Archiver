@@ -1,7 +1,6 @@
-!text									| 
-\code`"\active							| 
-\select@language{--}					| 
-\@writefile{toc}{\select@language{?}}	| 
-\@writefile{toc}{\select@language{?}}	| 
-_  _  _  _  _  _  _  _  _  _  _  _  _  _| 
- 
+\testing 
+\catcode`"\active
+\select@language{some language}
+\@writefile{toc}{\select@language{some language}}
+\@writefile{lof}{\select@language{some language}}
+\@writefile{lot}{\select@language{some language}}
